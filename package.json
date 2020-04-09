@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "start": "nodemon --exec babel-node -- ./src/app.js",
     "lint": "eslint ./src/",
     "test": "jest",
     "test:watch": "jest --watch",

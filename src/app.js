@@ -24,8 +24,7 @@ app.use(cors());
 const accessLogStream = fs.createWriteStream(path.join(__dirname, './db/access.log'), { flags: 'a', autoClose: true });
 
 
-// create a rotating write stream
-app.use(morgan('tiny'));
+
 app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time ms', { stream: accessLogStream }));
 
 app.use(express.json());
