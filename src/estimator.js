@@ -31,7 +31,9 @@ Output.prototype.convertToDays = function () {
 };
 
 Output.prototype.rateOfInfection = function () {
-  return 2 ** Math.floor(this.convertToDays() / 3);
+  const days = this.convertToDays / 3;
+  // eslint-disable-next-line no-bitwise
+  return 2 ** days | 0;
 };
 
 Output.prototype.currentlyInfected = function () {
@@ -41,14 +43,16 @@ Output.prototype.infectionsByRequestedTime = function () {
   return this.currentlyInfected() * this.estimationFactor;
 };
 Output.prototype.severeCasesByRequestedTime = function () {
-  return this.currentlyInfected() * 0.15;
+  // eslint-disable-next-line no-bitwise
+  return (this.currentlyInfected() * 0.15) | 0;
 };
 Output.prototype.hospitalBedsByRequestedTime = function () {
   return this.totalHospitalBeds * this.severeCasesByRequestedTime();
 };
 
 Output.prototype.casesForICUByRequestedTime = function () {
-  return this.severeCasesByRequestedTime() * 0.05;
+  // eslint-disable-next-line no-bitwise
+  return (this.severeCasesByRequestedTime() * 0.05) | 0;
 };
 
 Output.prototype.casesForVentilatorsByRequestedTime = function () {
@@ -113,4 +117,4 @@ const covid19ImpactEstimator = (data) => {
   };
 };
 
-export default covid19ImpactEstimator;
+module.exports = covid19ImpactEstimator;
