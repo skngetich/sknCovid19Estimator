@@ -78,8 +78,7 @@ Output.prototype.results = function () {
 };
 
 const covid19ImpactEstimator = (data) => {
-  // eslint-disable-next-line no-console
-  console.log(data);
+  
   const {
     region,
     periodType,
