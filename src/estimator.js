@@ -31,7 +31,7 @@ Output.prototype.convertToDays = function () {
 };
 
 Output.prototype.rateOfInfection = function () {
-  const days = this.convertToDays / 3;
+  const days = this.convertToDays() / 3;
   // eslint-disable-next-line no-bitwise
   return 2 ** days | 0;
 };
@@ -40,7 +40,7 @@ Output.prototype.currentlyInfected = function () {
   return this.reportedCases * this.estimationFactor;
 };
 Output.prototype.infectionsByRequestedTime = function () {
-  return this.currentlyInfected() * this.estimationFactor;
+  return this.currentlyInfected() * this.rateOfInfection();
 };
 Output.prototype.severeCasesByRequestedTime = function () {
   // eslint-disable-next-line no-bitwise
@@ -56,13 +56,15 @@ Output.prototype.casesForICUByRequestedTime = function () {
 };
 
 Output.prototype.casesForVentilatorsByRequestedTime = function () {
-  return this.infectionsByRequestedTime() * 0.02;
+  // eslint-disable-next-line no-bitwise
+  return (this.infectionsByRequestedTime() * 0.02) | 0;
 };
 Output.prototype.dollarsInFlight = function () {
-  return this.infectionsByRequestedTime()
+  // eslint-disable-next-line no-bitwise
+  return (this.infectionsByRequestedTime()
   * this.avgDailyIncomePopulation
   * this.avgDailyIncomeInUSD
-  * this.convertToDays();
+  * this.convertToDays()) | 0;
 };
 
 
