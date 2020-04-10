@@ -60,7 +60,7 @@ Output.prototype.dollarsInFlight = function () {
   const factor = this.avgDailyIncomePopulation * this.avgDailyIncomeInUSD;
   const days = this.convertToDays();
   const res = (this.infectionsByRequestedTime() * factor) / days;
-  return Number(res.toFixed(2));
+  return Math.trunc(res);
 };
 
 
