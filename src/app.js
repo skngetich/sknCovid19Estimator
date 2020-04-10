@@ -21,7 +21,7 @@ app.use(helmet());
 app.use(cors());
 
 if (!fs.existsSync(path.join(__dirname, './db/access.log'))) {
-  fs.mkdirSync('./src/db');
+  fs.mkdirSync('./dist/db');
 }
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, './db/access.log'), { flags: 'a+' });
