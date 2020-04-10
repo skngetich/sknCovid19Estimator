@@ -4,26 +4,60 @@ const input = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
+    avgDailyIncomeInUSD: 4,
+    avgDailyIncomePopulation: 0.73
   },
   periodType: 'days',
-  timeToElapse: 58,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
+  timeToElapse: 38,
+  reportedCases: 2747,
+  population: 92931687,
+  totalHospitalBeds: 678874
+};
+
+const expected = {
+  data: input,
+  impact: {
+    currentlyInfected: 27470,
+    infectionsByRequestedTime: 112517120,
+    severeCasesByRequestedTime: 16877568,
+    hospitalBedsByRequestedTime: -16639962,
+    casesForICUByRequestedTime: 5625856,
+    casesForVentilatorsByRequestedTime: 2250342,
+    dollarsInFlight: 12484899635
+
+  },
+  severeImpact: {
+    currentlyInfected: 137350,
+    infectionsByRequestedTime: 562585600,
+    severeCasesByRequestedTime: 84381840,
+    hospitalBedsByRequestedTime: -84150234,
+    casesForICUByRequestedTime: 28129280,
+    casesForVentilatorsByRequestedTime: 11251712,
+    dollarsInFlight: 62424498176
+
+  }
 };
 
 describe('covid-19 estimator app', () => {
   describe('Check output object', () => {
     const output = estimator(input);
 
+    test('Should march the expected object', () => {
+      expect(output.impact.currentlyInfected).toEqual(expected.impact.currentlyInfected);
+      expect(output.impact.infectionsByRequestedTime).toEqual(expected.impact.infectionsByRequestedTime);
+      expect(output.impact.severeCasesByRequestedTime).toEqual(expected.impact.severeCasesByRequestedTime);
+      expect(output.impact.hospitalBedsByRequestedTime).toEqual(expected.impact.hospitalBedsByRequestedTime);
+      expect(output.impact.casesForICUByRequestedTime).toEqual(expected.impact.casesForICUByRequestedTime);
+      expect(output.impact.dollarsInFlight).toEqual(expected.impact.dollarsInFlight);
+    });
+    
     test('Should return data object', () => {
       expect(output.data).toEqual(input);
     });
     describe('should return impact object that:', () => {
       test(' has currently infected cases', () => {
         expect(output.impact).toHaveProperty('currentlyInfected', expect.any(Number));
+        expect(output.impact.currentlyInfected).toEqual(expected.impact.currentlyInfected);
       });
       test(' has number of infected by requested time cases', () => {
         expect(output.impact).toHaveProperty('infectionsByRequestedTime', expect.any(Number));

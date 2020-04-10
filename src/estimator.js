@@ -33,7 +33,7 @@ Output.prototype.convertToDays = function () {
 Output.prototype.rateOfInfection = function () {
   const days = this.convertToDays() / 3;
   // eslint-disable-next-line no-bitwise
-  return 2 ** days | 0;
+  return 2 ** (days | 0);
 };
 
 Output.prototype.currentlyInfected = function () {
@@ -47,12 +47,13 @@ Output.prototype.severeCasesByRequestedTime = function () {
   return (this.infectionsByRequestedTime() * 0.15) | 0;
 };
 Output.prototype.hospitalBedsByRequestedTime = function () {
-  return this.totalHospitalBeds * this.severeCasesByRequestedTime();
+  // eslint-disable-next-line no-bitwise
+  return ((this.totalHospitalBeds * 0.35) - this.severeCasesByRequestedTime()) | 0;
 };
 
 Output.prototype.casesForICUByRequestedTime = function () {
   // eslint-disable-next-line no-bitwise
-  return (this.severeCasesByRequestedTime() * 0.05) | 0;
+  return (this.infectionsByRequestedTime() * 0.05) | 0;
 };
 
 Output.prototype.casesForVentilatorsByRequestedTime = function () {
@@ -61,10 +62,10 @@ Output.prototype.casesForVentilatorsByRequestedTime = function () {
 };
 Output.prototype.dollarsInFlight = function () {
   // eslint-disable-next-line no-bitwise
-  return (this.infectionsByRequestedTime()
+  return Math.trunc(this.infectionsByRequestedTime()
   * this.avgDailyIncomePopulation
   * this.avgDailyIncomeInUSD
-  * this.convertToDays()) | 0;
+  * this.convertToDays());
 };
 
 
