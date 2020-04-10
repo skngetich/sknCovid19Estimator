@@ -57,10 +57,10 @@ Output.prototype.casesForVentilatorsByRequestedTime = function () {
   return Math.trunc(this.infectionsByRequestedTime() * 0.02);
 };
 Output.prototype.dollarsInFlight = function () {
-  return Math.trunc(this.infectionsByRequestedTime()
-  * this.avgDailyIncomePopulation
-  * this.avgDailyIncomeInUSD
-  * this.convertToDays());
+  const factor = this.avgDailyIncomePopulation * this.avgDailyIncomeInUSD;
+  const days = this.convertToDays();
+  const res = (this.infectionsByRequestedTime() * factor) / days;
+  return Number(res.toFixed(2));
 };
 
 
