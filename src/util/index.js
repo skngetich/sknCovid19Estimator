@@ -19,21 +19,20 @@ module.exports = {
   },
   schemas: {
     input: Joi.object({
-      data: Joi.object({
-        region: Joi.object().keys({
-          name: Joi.string().required(),
-          avgAge: Joi.number(),
-          avgDailyIncomeInUSD: Joi.number().required(),
-          avgDailyIncomePopulation: Joi.number().required()
-        }),
-        periodType: Joi.string().valid(...['days', 'weeks', 'months']).required(),
-        timeToElapse: Joi.number().required(),
-        reportedCases: Joi.number().required(),
-        population: Joi.number().required(),
-        totalHospitalBeds: Joi.number().required()
+      region: Joi.object().keys({
+        name: Joi.string().required(),
+        avgAge: Joi.number(),
+        avgDailyIncomeInUSD: Joi.number().required(),
+        avgDailyIncomePopulation: Joi.number().required()
+      }),
+      periodType: Joi.string().valid(...['days', 'weeks', 'months']).required(),
+      timeToElapse: Joi.number().required(),
+      reportedCases: Joi.number().required(),
+      population: Joi.number().required(),
+      totalHospitalBeds: Joi.number().required()
 
-      })
     })
+
 
   }
 

@@ -8,7 +8,7 @@ module.exports = {
 
   async getJson(req, res, next) {
     let posted;
-    const { data } = req.body;
+    const data = req.body;
 
 
     try {
@@ -21,7 +21,7 @@ module.exports = {
 
   async getXml(req, res, next) {
     let posted;
-    const { data } = req.body;
+    const data = req.body;
     try {
       posted = await estimateXml(data);
       res.status(200).type('application/xml').send(posted);
