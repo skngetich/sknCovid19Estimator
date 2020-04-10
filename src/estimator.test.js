@@ -29,7 +29,7 @@ const expected = {
   severeImpact: {
     currentlyInfected: 137350,
     infectionsByRequestedTime: 562585600,
-    severeCasesByRequestedTime: 84381840,
+    severeCasesByRequestedTime: 84387840,
     hospitalBedsByRequestedTime: -84150234,
     casesForICUByRequestedTime: 28129280,
     casesForVentilatorsByRequestedTime: 11251712,
@@ -43,7 +43,7 @@ describe('covid-19 estimator app', () => {
     const output = estimator(input);
 
     test('Should march the expected object', () => {
-      expect(output.impact).toMatch(expected);
+      expect(output).toMatchObject(expected);
     });
 
     test('Should return data object', () => {

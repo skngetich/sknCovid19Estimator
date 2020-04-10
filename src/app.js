@@ -33,9 +33,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/api/v1/covid-19/logs', getLogs);
-app.post('/api/v1/covid-19/json', validateBody(schemas.input), getJson);
-app.post('/api/v1/covid-19/xml', validateBody(schemas.input), getXml);
+app.get('/api/v1/on-covid-19/logs', getLogs);
+app.post('/api/v1/on-covid-19/json', validateBody(schemas.input), getJson);
+app.post('/api/v1/on-covid-19/xml', validateBody(schemas.input), getXml);
 
 
 // Catch all routes
