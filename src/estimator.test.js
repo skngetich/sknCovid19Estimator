@@ -43,14 +43,9 @@ describe('covid-19 estimator app', () => {
     const output = estimator(input);
 
     test('Should march the expected object', () => {
-      expect(output.impact.currentlyInfected).toEqual(expected.impact.currentlyInfected);
-      expect(output.impact.infectionsByRequestedTime).toEqual(expected.impact.infectionsByRequestedTime);
-      expect(output.impact.severeCasesByRequestedTime).toEqual(expected.impact.severeCasesByRequestedTime);
-      expect(output.impact.hospitalBedsByRequestedTime).toEqual(expected.impact.hospitalBedsByRequestedTime);
-      expect(output.impact.casesForICUByRequestedTime).toEqual(expected.impact.casesForICUByRequestedTime);
-      expect(output.impact.dollarsInFlight).toEqual(expected.impact.dollarsInFlight);
+      expect(output.impact).toMatch(expected);
     });
-    
+
     test('Should return data object', () => {
       expect(output.data).toEqual(input);
     });
