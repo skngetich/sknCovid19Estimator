@@ -44,7 +44,7 @@ Output.prototype.infectionsByRequestedTime = function () {
 };
 Output.prototype.severeCasesByRequestedTime = function () {
   // eslint-disable-next-line no-bitwise
-  return (this.currentlyInfected() * 0.15) | 0;
+  return (this.infectionsByRequestedTime() * 0.15) | 0;
 };
 Output.prototype.hospitalBedsByRequestedTime = function () {
   return this.totalHospitalBeds * this.severeCasesByRequestedTime();
