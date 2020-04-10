@@ -20,9 +20,11 @@ dotenv.config();
 app.use(helmet());
 app.use(cors());
 
+if (!fs.existsSync(path.join(__dirname, './db/access.log'))) {
+  fs.mkdirSync('./src/db');
+}
 
-const accessLogStream = fs.createWriteStream(path.join(__dirname, './db/access.log'), { flags: 'a', autoClose: true });
-
+const accessLogStream = fs.createWriteStream(path.join(__dirname, './db/access.log'), { flags: 'a+' });
 
 
 app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time ms', { stream: accessLogStream }));
