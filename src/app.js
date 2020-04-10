@@ -27,7 +27,7 @@ if (!fs.existsSync(path.join(__dirname, './db/access.log'))) {
 const accessLogStream = fs.createWriteStream(path.join(__dirname, './db/access.log'), { flags: 'a+' });
 
 
-app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time ms', { stream: accessLogStream }));
+app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time\t\tms\n', { stream: accessLogStream }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
