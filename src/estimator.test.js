@@ -23,7 +23,7 @@ const expected = {
     hospitalBedsByRequestedTime: -16639962,
     casesForICUByRequestedTime: 5625856,
     casesForVentilatorsByRequestedTime: 2250342,
-    dollarsInFlight: 12484899635.2
+    dollarsInFlight: 8646052
 
   },
   severeImpact: {
@@ -33,7 +33,7 @@ const expected = {
     hospitalBedsByRequestedTime: -84150234,
     casesForICUByRequestedTime: 28129280,
     casesForVentilatorsByRequestedTime: 11251712,
-    dollarsInFlight: 62424498176
+    dollarsInFlight: 43230261
 
   }
 };
