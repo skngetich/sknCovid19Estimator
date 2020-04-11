@@ -3,11 +3,12 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="Description" content="This is Covid-19 Estimator app build by Stephen Ng'etich  ">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/form.css">
+    <link id="first_style" rel="stylesheet" href="css/bootstrap.min.css" disabled>
+    <link id="second_style" rel="stylesheet" href="css/form.css" disabled>
     <title>Covid-19 Estimator</title>
   </head>
   <body>
@@ -33,8 +34,8 @@
            
             <div class="form-row">
                 <div class="form-group">
-                    <label for="timeInterval">Estimate time interval</label>
-                <div class="input-group">
+                    <label for="data-period-type">Estimate time interval</label>
+                <div class="input-group" >
                     <input type="text" class="form-control" placeholder="Enter Number " id="data-time-to-elapse" aria-label="Time interval estimate" >
                     <div class="input-group-append">
                       
@@ -50,5 +51,12 @@
             <button type="submit" id="data-go-estimate" class="btn btn-secondary" aria-roledescription="submit button">Estimate </button>
           </form>
       </div>
+      <script type="text/javascript" async>
+        window.onload = function()
+        {
+            document.getElementById('first_style').removeAttribute('disabled');
+            document.getElementById('second_style').removeAttribute('disabled');
+        }
+    </script>
   </body>
 </html>
