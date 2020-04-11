@@ -32,6 +32,10 @@ app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time\t\tms', { stream: a
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', (req, res) => {
+  res.type('html').sendFile(path.join(`${__dirname}/public/index.html`));
+});
 
 app.post('/api/v1/on-covid-19/', validateBody(schemas.input), getJson);
 app.get('/api/v1/on-covid-19/logs', getLogs);

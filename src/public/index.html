@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/form.css">
+    <title>Covid-19 Estimator</title>
+  </head>
+  <body>
+      <div class="form-estimate">
+          <p class="text">Lets Estimate  </p>
+          <p class="text">Africa's COVID-19  </p>
+          <p class="text">   Effects </p>
+        <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="data-population">Population to estimate</label>
+                <input type="text" class="form-control" id="data-population" aria-label=“Population” placeholder="Population">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="data-reported-cases">Reported cases</label>
+                <input type="text" class="form-control" id="data-reported-cases" placeholder="Reported cases" aria-label="data-reported-cases">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="data-total-hospital-beds">Available hospital bed in the region</label>
+              <input type="text" class="form-control" id="data-total-hospital-beds" placeholder="Available hospital beds" aria-label=“data-total-hospital-beds  ”  aria-required="true">
+            </div>
+           
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="timeInterval">Estimate time interval</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Number " id="data-time-to-elapse" aria-label="Time interval estimate" >
+                    <div class="input-group-append">
+                      
+                      <select class=" input-group-text form-control" id="data-period-type">
+                        <option>days</option>
+                        <option>weeks</option>
+                        <option>months</option>
+                        </select>  
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <button type="submit" id="data-go-estimate" class="btn btn-secondary" aria-roledescription="submit button">Estimate </button>
+          </form>
+      </div>
+  </body>
+</html>
