@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const compression = require('compression');
 const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
@@ -11,7 +12,7 @@ const { getJson, getXml, getLogs } = require('./controllers');
 const { schemas, validateBody } = require('./util');
 
 const app = express();
-
+app.use(compression());
 app.use(express.static('db'));
 
 dotenv.config();
