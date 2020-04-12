@@ -20,23 +20,26 @@ dotenv.config();
 
 app.use(helmet());
 app.use(cors());
-
-if (!fs.existsSync(path.join(__dirname, './db/access.log'))) {
-  fs.mkdirSync('./dist/db');
-}
-
-const accessLogStream = fs.createWriteStream(path.join(__dirname, './db/access.log'), { flags: 'a+' });
-
-
-app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time\t\tms', { stream: accessLogStream }));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+if (!fs.existsSync(path.join(__dirname, './db/access.log'))) {
+  fs.mkdirSync('./src/db');
+}
+
+
+const accessLogStream = fs.createWriteStream(path.join(__dirname, './db/access.log'), { flags: 'a+' });
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res) => {
   res.type('html').sendFile(path.join(`${__dirname}/public/index.html`));
 });
+morgan.token('response-time-ms', function getResponce(req, res) {
+  return `${this['response-time'](req, res, 0)}ms`;
+});
+app.use(morgan(':method\t:url\t:status\t:response-time-ms', { stream: accessLogStream }));
+
 
 app.post('/api/v1/on-covid-19/', validateBody(schemas.input), getJson);
 app.get('/api/v1/on-covid-19/logs', getLogs);
