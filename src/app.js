@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
   res.type('html').sendFile(path.join(`${__dirname}/public/index.html`));
 });
 morgan.token('response-time-ms', function getResponse(req, res) {
-  return `${this['response-time'](req, res, 0)}ms`;
+  return `${this['response-time'](req, res, 0)}0ms`;
 });
 app.use(morgan(':method\t:url\t:status\t:response-time-ms', { stream: accessLogStream }));
 
