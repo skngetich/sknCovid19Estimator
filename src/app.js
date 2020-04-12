@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 if (!fs.existsSync(path.join(__dirname, './db/access.log'))) {
-  fs.mkdirSync('./src/db');
+  fs.mkdirSync('./dist/db');
 }
 
 
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.type('html').sendFile(path.join(`${__dirname}/public/index.html`));
 });
-morgan.token('response-time-ms', function getResponce(req, res) {
+morgan.token('response-time-ms', function getResponse(req, res) {
   return `${this['response-time'](req, res, 0)}ms`;
 });
 app.use(morgan(':method\t:url\t:status\t:response-time-ms', { stream: accessLogStream }));
