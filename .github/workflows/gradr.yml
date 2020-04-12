@@ -224,7 +224,7 @@ jobs:
       if: always()
 
   ch-5:
-    needs: ch-3
+    needs: ch-4
     name: audit backend API
     runs-on: macos-latest
 
